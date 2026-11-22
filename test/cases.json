@@ -1,0 +1,37 @@
+{
+ "tests": [
+  {
+   "in": {
+    "csv": "name,depends_on,boot_min\nDC01,,10\nDC02,DC01,10\nSQL01,DC01,15\nAPP01,SQL01;DC01,5\nWEB01,APP01,3\nFILE01,DC01,5"
+   },
+   "v": {
+    "waves": 4,
+    "total": 33,
+    "critical": [
+     "DC01",
+     "SQL01",
+     "APP01",
+     "WEB01"
+    ]
+   }
+  },
+  {
+   "in": {
+    "csv": "name,depends_on,boot_min\nA,C,5\nB,A,5\nC,B,5"
+   },
+   "err": "csv"
+  },
+  {
+   "in": {
+    "csv": "name,depends_on,boot_min\nA,X,5"
+   },
+   "err": "csv"
+  },
+  {
+   "in": {
+    "csv": "name,depends_on\nA,\nA,"
+   },
+   "err": "csv"
+  }
+ ]
+}
